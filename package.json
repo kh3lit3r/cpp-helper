@@ -1,0 +1,63 @@
+{
+  "name": "cpp-helper",
+  "displayName": "C++ Помощник",
+  "description": "Простое расширение для C++: #pragma once, заготовка класса, переключение между .h и .cpp",
+  "version": "0.0.1",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:cpp",
+    "onLanguage:c"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cppHelper.insertPragmaOnce",
+        "title": "C++ Помощник: Вставить #pragma once"
+      },
+      {
+        "command": "cppHelper.createClass",
+        "title": "C++ Помощник: Вставить заготовку класса"
+      },
+      {
+        "command": "cppHelper.toggleHeaderSource",
+        "title": "C++ Помощник: Переключиться между .h и .cpp"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "cppHelper.toggleHeaderSource",
+        "key": "alt+o",
+        "when": "editorLangId == cpp || editorLangId == c"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "cppHelper.toggleHeaderSource",
+          "when": "editorLangId == cpp || editorLangId == c",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0"
+  }
+}
